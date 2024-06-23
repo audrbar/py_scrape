@@ -78,7 +78,7 @@ df = pd.DataFrame({
     'Type': type_list,
     'Town': town_list
 })
-df.to_csv("aruodas_first.csv")
+df.to_csv("aruodas_first.csv", index=False)
 print(df)
 # -----------Read Data Frame from File and Explore it-------------
 df_d = pd.read_csv("aruodas_first.csv")
