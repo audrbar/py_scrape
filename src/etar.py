@@ -46,9 +46,9 @@ df['Legal_act_date'] = pd.to_datetime(df['Legal_act_date'])
 df['Registry_date'] = pd.to_datetime(df['Registry_date'])
 df['Date_entry'] = pd.to_datetime(df['Date_entry'])
 # ---------------Write DF to File and Read from it----------------
-df.to_csv("etar.csv", index=False)
-df = pd.read_csv("etar.csv")
-print(df)
+# df.to_csv("etar.csv", index=False)
+# df = pd.read_csv("etar.csv")
+# print(df)
 # --------------------Explore Data Frame--------------------------
 print('----Shape----\n', df.shape)
 print('----Head----\n', df.head())
