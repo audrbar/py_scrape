@@ -12,7 +12,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 pd.options.display.max_rows = 50
-
+# print(sys.version)
+print('Pandas version:', pd.__version__)
 # ----------------------------Scrape Data--------------------
 url = 'https://e-tar.lt/portal/lt/newLegalActs'
 page = requests.get(url)
@@ -57,13 +58,21 @@ df['Date_entry'] = pd.to_datetime(df['Date_entry'])
 df['Act_number']
 print('----Shape----\n', df.shape)
 print('----Head----\n', df.head())
+print('\n- Describe:\n', df.describe())
 print('----Columns----\n', df.columns)
+# print('----Column----\n', df.loc(6))
 print('----Dtypes----\n', df.dtypes)
 print('----Is Null?----\n', df.isnull().any())
+# df = df.loc[~df['Act_type'].isna()] # Remove rows with NaN in Act_type
 # df[df['Act_type'].isna()==1]
 # df['Act_type'] = df['Act_type'].fillna(0)
 # df[df['Act_type'].duplicated()==1]
 # df[df['Act_type'].isin(['Del kazko', 'Del kitko'])]
+# df.set_index(drop=True, inplace=True)
+# df = df.set_index('ID')
+# df = df[['Act_type', 'Act_issuer', 'Act_number', 'Act_date']] # Subsetting columns
+# df = df.loc[df['Some_col'] > 1000] # Subsetting with loc
+# df = df.query('Some_col > 1000') # Subsetting with query
 # df.drop_duplicates()
 print('----Is None?----\n', df.isna().sum())
 print('----Is Duplicated?----\n', df.loc[df.duplicated()])
@@ -81,6 +90,8 @@ plt.figure(figsize=(8, 6))
 plt.pie(type_counts, labels=type_labels, autopct='%1.1f%%', startangle=130)
 plt.title("Legal Act Types")
 plt.show()
+
+df['Act_date'].dt.date.value_counts().plot(figsize=(10, 6), bins=20, kind='hist')
 
 # ------------------------Draw Plot---------------------------------
 # acts_counts = df["Legal_act_date"].dt.year.value_counts()
