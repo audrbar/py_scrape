@@ -59,7 +59,7 @@ df = pd.DataFrame({
 print('\n- Data Frame:\n', df.head(10))
 
 print('\n---------6. Write Data Frame to file and Read it-----------')
-# df.to_csv("aruodas_df.csv", index=False)
+df.to_csv("aruodas_df.csv", index=False)
 # df = pd.read_csv("aruodas_df.csv")
 print('- Not this time.')
 
@@ -69,6 +69,7 @@ df['Discount'] = df['Location'].str.split(pat='\n').str[2].str.strip()
 df['Price (€)'] = df['Location'].str.split(pat='\n').str[-2].str.strip()
 df['Price (€/a)'] = df['Location'].str.split(pat='\n').str[-1].str.strip()
 df['Location'] = df['Location'].str.split(pat='\n').str[0].str.split(pat=',').str[0].str.strip()
+df['Settlement'] = df['Location'].str.split(pat=',').str[1].str.split(pat='\n').str[0].str.strip()
 df['Area_Overall'] = pd.to_numeric(df['Area_Overall'].astype('str'))
 df['Price (€)'] = df['Price (€)'].str.split(pat='€').str[0].str.replace(r'\s+', '', regex=True).astype(int)
 df['Price (€/a)'] = df['Price (€/a)'].str.split(pat='€').str[0].str.replace(r'\s+', '', regex=True).astype(int)

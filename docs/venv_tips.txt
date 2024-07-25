@@ -1,0 +1,30 @@
+Interpreter add Virtual Environment
+
+# python -m venv myenv
+# myenv\Scripts\activate
+# source py_scrape/bin/activate
+# source .venv/bin/activate # on mac
+# deactivate
+# pip install <name_of_the_package>
+# shif cmd .  -  show hidden files
+
+https://cookiecutter-data-science.drivendata.org/
+from dataclasses import dataclass, field
+
+@dataclass
+class Person:
+    name: str
+    age: int
+    address: str = field(default="Unknown Address")
+
+
+person1 = Person(name="Alice", age=30)
+print(person1)
+
+pip freeze > \requirements.txt
+pip install -r \requirements.txt
+
+
+https://github.com/DatumLearning/Streamlit_full_course/blob/main/lecture-6.py
+https://github.com/Ashwani132003/pondering/blob/main/main.py
+https://github.com/Sven-Bo/streamlit-income-expense-tracker/blob/master/app.py
